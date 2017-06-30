@@ -62,9 +62,6 @@
 	var ReactDOM = __webpack_require__(37);
 	var client = __webpack_require__(184);
 	
-	// place app component on page
-	ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
-	
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 	
@@ -163,17 +160,17 @@
 	                React.createElement(
 	                    'td',
 	                    null,
-	                    this.props.employees.firstName
+	                    this.props.employee.firstName
 	                ),
 	                React.createElement(
 	                    'td',
 	                    null,
-	                    this.props.employees.lastName
+	                    this.props.employee.lastName
 	                ),
 	                React.createElement(
 	                    'td',
 	                    null,
-	                    this.props.employees.description
+	                    this.props.employee.description
 	                )
 	            );
 	        }
@@ -181,6 +178,11 @@
 	
 	    return Employee;
 	}(React.Component);
+	
+	// place app component on page
+	
+	
+	ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
 
 /***/ }),
 /* 1 */
@@ -22328,13 +22330,13 @@
 	var rest = __webpack_require__(185);
 	var defaultRequest = __webpack_require__(213);
 	var mime = __webpack_require__(215);
-	var uriTemplateInterceptor = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./api/uriTemplateInterceptor\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var errorCode = __webpack_require__(229);
+	var uriTemplateInterceptor = __webpack_require__(229);
+	var errorCode = __webpack_require__(230);
 	var baseRegistry = __webpack_require__(217);
 	
 	var registry = baseRegistry.child();
 	
-	registry.register('text/uri-list', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./api/uriListConverter\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
+	registry.register('text/uri-list', __webpack_require__(231));
 	registry.register('application/hal+json', __webpack_require__(218));
 	
 	module.exports = rest.wrap(mime, { registry: registry }).wrap(uriTemplateInterceptor).wrap(errorCode).wrap(defaultRequest, { headers: { 'Accept': 'application/hal+json' } });
@@ -27237,6 +27239,33 @@
 /* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+	
+	/**
+	 * Created by eric on 6/30/17.
+	 */
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
+	    'use strict';
+	
+	    var interceptor = __webpack_require__(214);
+	
+	    return interceptor({
+	        request: function request(_request /*, config, meta */) {
+	            /* If the URI is a URI Template per RFC 6570 (http://tools.ietf.org/html/rfc6570), trim out the template part */
+	            if (_request.path.indexOf('{') === -1) {
+	                return _request;
+	            } else {
+	                _request.path = _request.path.split('{')[0];
+	                return _request;
+	            }
+	        }
+	    });
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }),
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
 	 * Copyright 2012-2013 the original author or authors
 	 * @license MIT, see LICENSE.txt for details
@@ -27285,6 +27314,38 @@
 		// Boilerplate for AMD and Node
 	));
 
+
+/***/ }),
+/* 231 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+	
+	/**
+	 * Created by eric on 6/30/17.
+	 */
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	    'use strict';
+	
+	    /* Convert a single or array of resources into "URI1\nURI2\nURI3..." */
+	
+	    return {
+	        read: function read(str /*, opts */) {
+	            return str.split('\n');
+	        },
+	        write: function write(obj /*, opts */) {
+	            // If this is an Array, extract the self URI and then join using a newline
+	            if (obj instanceof Array) {
+	                return obj.map(function (resource) {
+	                    return resource._links.self.href;
+	                }).join('\n');
+	            } else {
+	                // otherwise, just return the self URI
+	                return obj._links.self.href;
+	            }
+	        }
+	    };
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ })
 /******/ ]);

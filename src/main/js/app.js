@@ -6,9 +6,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 
-// place app component on page
-ReactDOM.render( (<App/>), document.getElementById('react') );
-
 class App extends React.Component {
 
     constructor(props) {
@@ -53,10 +50,13 @@ class Employee extends React.Component {
     render() {
         return (
             <tr>
-                <td>{this.props.employees.firstName}</td>
-                <td>{this.props.employees.lastName}</td>
-                <td>{this.props.employees.description}</td>
+                <td>{this.props.employee.firstName}</td>
+                <td>{this.props.employee.lastName}</td>
+                <td>{this.props.employee.description}</td>
             </tr>
         );
     }
 }
+
+// place app component on page
+ReactDOM.render( <App/>, document.getElementById('react') );
