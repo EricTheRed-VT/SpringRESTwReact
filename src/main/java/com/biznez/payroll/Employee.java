@@ -18,7 +18,9 @@ public class Employee {
     private  String lastName;
     private String description;
 
-    private Employee() {}
+    private Employee() {
+        
+    }
     public Employee(String first, String last, String descrip) {
         firstName = first;
         lastName = last;
