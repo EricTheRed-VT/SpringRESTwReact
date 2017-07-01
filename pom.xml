@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.biznez</groupId>
-    <artifactId>react-and-spring-data-rest-basic</artifactId>
+    <artifactId>react-and-spring-data-rest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 

@@ -4,20 +4,23 @@
 
 'use strict';
 
-var rest = require('rest');
-var defaultRequest = require('rest/interceptor/defaultRequest');
-var mime = require('rest/interceptor/mime');
-var uriTemplateInterceptor = require('./api/uriTemplateInterceptor');
-var errorCode = require('rest/interceptor/errorCode');
-var baseRegistry = require('rest/mime/registry');
+import rest from 'rest';
+import defaultRequest from 'rest/interceptor/defaultRequest';
+import errorCode from 'rest/interceptor/errorCode';
+import mime from 'rest/interceptor/mime';
+import baseRegistry from 'rest/mime/registry';
+import hal from 'rest/mime/type/application/hal';
 
-var registry = baseRegistry.child();
+import uriListConverter from './api/uriListConverter';
+import uriTemplateInterceptor from './api/uriTemplateInterceptor';
 
-registry.register('text/uri-list', require('./api/uriListConverter'));
-registry.register('application/hal+json', require('rest/mime/type/application/hal'));
+const registry = baseRegistry.child();
 
-module.exports = rest
-    .wrap(mime, { registry: registry })
-    .wrap(uriTemplateInterceptor)
-    .wrap(errorCode)
-    .wrap(defaultRequest, { headers: { 'Accept': 'application/hal+json' }});
+registry.register('text/uri-list', uriListConverter);
+registry.register('application/hal+json', hal);
+
+export default rest
+                .wrap(mime, { registry: registry })
+                .wrap(uriTemplateInterceptor)
+                .wrap(errorCode)
+                .wrap(defaultRequest, { headers: { 'Accept': 'application/hal+json' }});

@@ -46,143 +46,24 @@
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _react = __webpack_require__(1);
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _react2 = _interopRequireDefault(_react);
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var _reactDom = __webpack_require__(37);
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	/**
-	 * Created by eric on 6/30/17.
-	 */
+	var _Main = __webpack_require__(184);
 	
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(37);
-	var client = __webpack_require__(184);
+	var _Main2 = _interopRequireDefault(_Main);
 	
-	var App = function (_React$Component) {
-	    _inherits(App, _React$Component);
-	
-	    function App(props) {
-	        _classCallCheck(this, App);
-	
-	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-	
-	        _this.state = { employees: [] };
-	        return _this;
-	    }
-	
-	    _createClass(App, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
-	
-	            client({ method: 'GET', path: '/api/employees' }).done(function (response) {
-	                _this2.setState({ employees: response.entity._embedded.employees });
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(EmployeeList, { employees: this.state.employees });
-	        }
-	    }]);
-	
-	    return App;
-	}(React.Component);
-	
-	var EmployeeList = function (_React$Component2) {
-	    _inherits(EmployeeList, _React$Component2);
-	
-	    function EmployeeList() {
-	        _classCallCheck(this, EmployeeList);
-	
-	        return _possibleConstructorReturn(this, (EmployeeList.__proto__ || Object.getPrototypeOf(EmployeeList)).apply(this, arguments));
-	    }
-	
-	    _createClass(EmployeeList, [{
-	        key: 'render',
-	        value: function render() {
-	            var employees = this.props.employees.map(function (employee) {
-	                return React.createElement(Employee, { key: employee._links.self.href, employee: employee });
-	            });
-	            return React.createElement(
-	                'table',
-	                null,
-	                React.createElement(
-	                    'tbody',
-	                    null,
-	                    React.createElement(
-	                        'tr',
-	                        null,
-	                        React.createElement(
-	                            'th',
-	                            null,
-	                            'First Name'
-	                        ),
-	                        React.createElement(
-	                            'th',
-	                            null,
-	                            'Last Name'
-	                        ),
-	                        React.createElement(
-	                            'th',
-	                            null,
-	                            'Description'
-	                        )
-	                    ),
-	                    employees
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return EmployeeList;
-	}(React.Component);
-	
-	var Employee = function (_React$Component3) {
-	    _inherits(Employee, _React$Component3);
-	
-	    function Employee() {
-	        _classCallCheck(this, Employee);
-	
-	        return _possibleConstructorReturn(this, (Employee.__proto__ || Object.getPrototypeOf(Employee)).apply(this, arguments));
-	    }
-	
-	    _createClass(Employee, [{
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(
-	                'tr',
-	                null,
-	                React.createElement(
-	                    'td',
-	                    null,
-	                    this.props.employee.firstName
-	                ),
-	                React.createElement(
-	                    'td',
-	                    null,
-	                    this.props.employee.lastName
-	                ),
-	                React.createElement(
-	                    'td',
-	                    null,
-	                    this.props.employee.description
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Employee;
-	}(React.Component);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	// place app component on page
-	
-	
-	ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
+	_reactDom2.default.render(_react2.default.createElement(_Main2.default, null), document.getElementById('react')); /**
+	                                                                                                                   * Created by eric on 6/30/17.
+	                                                                                                                   */
 
 /***/ }),
 /* 1 */
@@ -22321,28 +22202,149 @@
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _client = __webpack_require__(185);
+	
+	var _client2 = _interopRequireDefault(_client);
+	
+	var _follow = __webpack_require__(233);
+	
+	var _follow2 = _interopRequireDefault(_follow);
+	
+	var _EmployeeList = __webpack_require__(234);
+	
+	var _EmployeeList2 = _interopRequireDefault(_EmployeeList);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var root = '/api';
+	
+	var Main = function (_React$Component) {
+	    _inherits(Main, _React$Component);
+	
+	    function Main(props) {
+	        _classCallCheck(this, Main);
+	
+	        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+	
+	        _this.state = { employees: [] };
+	        return _this;
+	    }
+	
+	    _createClass(Main, [{
+	        key: 'loadFromServer',
+	        value: function loadFromServer(pageSize) {
+	            var _this2 = this;
+	
+	            (0, _follow2.default)(_client2.default, root, [{ rel: 'employees', params: { size: pageSize } }]).then(function (employeeCollection) {
+	                return (0, _client2.default)({
+	                    method: 'GET',
+	                    path: employeeCollection.entity._links.profile.href,
+	                    headers: { 'Accept': 'application/schema+json' }
+	                }).then(function (schema) {
+	                    _this2.schema = schema.entity;
+	                    return employeeCollection;
+	                });
+	            }).done(function (employeeCollection) {
+	                _this2.setState({
+	                    employees: employeeCollection.entity._embedded.employees,
+	                    attributes: Object.keys(_this2.schema.properties),
+	                    pageSize: pageSize,
+	                    links: employeeCollection.entity._links
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.loadFromServer(this.state.pageSize);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(_EmployeeList2.default, { employees: this.state.employees });
+	        }
+	    }]);
+	
+	    return Main;
+	}(_react2.default.Component);
+	
+	exports.default = Main;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	/**
 	 * Created by eric on 6/30/17.
 	 */
 	
 	'use strict';
 	
-	var rest = __webpack_require__(185);
-	var defaultRequest = __webpack_require__(213);
-	var mime = __webpack_require__(215);
-	var uriTemplateInterceptor = __webpack_require__(229);
-	var errorCode = __webpack_require__(230);
-	var baseRegistry = __webpack_require__(217);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
-	var registry = baseRegistry.child();
+	var _rest = __webpack_require__(186);
 	
-	registry.register('text/uri-list', __webpack_require__(231));
-	registry.register('application/hal+json', __webpack_require__(218));
+	var _rest2 = _interopRequireDefault(_rest);
 	
-	module.exports = rest.wrap(mime, { registry: registry }).wrap(uriTemplateInterceptor).wrap(errorCode).wrap(defaultRequest, { headers: { 'Accept': 'application/hal+json' } });
+	var _defaultRequest = __webpack_require__(214);
+	
+	var _defaultRequest2 = _interopRequireDefault(_defaultRequest);
+	
+	var _errorCode = __webpack_require__(216);
+	
+	var _errorCode2 = _interopRequireDefault(_errorCode);
+	
+	var _mime = __webpack_require__(217);
+	
+	var _mime2 = _interopRequireDefault(_mime);
+	
+	var _registry = __webpack_require__(219);
+	
+	var _registry2 = _interopRequireDefault(_registry);
+	
+	var _hal = __webpack_require__(220);
+	
+	var _hal2 = _interopRequireDefault(_hal);
+	
+	var _uriListConverter = __webpack_require__(231);
+	
+	var _uriListConverter2 = _interopRequireDefault(_uriListConverter);
+	
+	var _uriTemplateInterceptor = __webpack_require__(232);
+	
+	var _uriTemplateInterceptor2 = _interopRequireDefault(_uriTemplateInterceptor);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var registry = _registry2.default.child();
+	
+	registry.register('text/uri-list', _uriListConverter2.default);
+	registry.register('application/hal+json', _hal2.default);
+	
+	exports.default = _rest2.default.wrap(_mime2.default, { registry: registry }).wrap(_uriTemplateInterceptor2.default).wrap(_errorCode2.default).wrap(_defaultRequest2.default, { headers: { 'Accept': 'application/hal+json' } });
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -22357,8 +22359,8 @@
 	
 		!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
 	
-			var rest = __webpack_require__(186),
-			    browser = __webpack_require__(189);
+			var rest = __webpack_require__(187),
+			    browser = __webpack_require__(190);
 	
 			rest.setPlatformDefaultClient(browser);
 	
@@ -22367,13 +22369,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -22448,7 +22450,7 @@
 	
 			var client, target, platformDefault;
 	
-			client = __webpack_require__(187);
+			client = __webpack_require__(188);
 	
 			/**
 			 * Make a request with the default client
@@ -22497,13 +22499,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -22567,20 +22569,20 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -22597,11 +22599,11 @@
 	
 			var when, UrlBuilder, normalizeHeaderName, responsePromise, client, headerSplitRE;
 	
-			when = __webpack_require__(190);
-			UrlBuilder = __webpack_require__(209);
-			normalizeHeaderName = __webpack_require__(211);
-			responsePromise = __webpack_require__(212);
-			client = __webpack_require__(187);
+			when = __webpack_require__(191);
+			UrlBuilder = __webpack_require__(210);
+			normalizeHeaderName = __webpack_require__(212);
+			responsePromise = __webpack_require__(213);
+			client = __webpack_require__(188);
 	
 			// according to the spec, the line break is '\r\n', but doesn't hold true in practice
 			headerSplitRE = /[\r|\n]+/;
@@ -22753,14 +22755,14 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188),
+		__webpack_require__(189),
 		typeof window !== 'undefined' ? window : void 0
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -22774,24 +22776,24 @@
 	(function(define) { 'use strict';
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
 	
-		var timed = __webpack_require__(191);
-		var array = __webpack_require__(195);
-		var flow = __webpack_require__(198);
-		var fold = __webpack_require__(199);
-		var inspect = __webpack_require__(200);
-		var generate = __webpack_require__(201);
-		var progress = __webpack_require__(202);
-		var withThis = __webpack_require__(203);
-		var unhandledRejection = __webpack_require__(204);
-		var TimeoutError = __webpack_require__(194);
+		var timed = __webpack_require__(192);
+		var array = __webpack_require__(196);
+		var flow = __webpack_require__(199);
+		var fold = __webpack_require__(200);
+		var inspect = __webpack_require__(201);
+		var generate = __webpack_require__(202);
+		var progress = __webpack_require__(203);
+		var withThis = __webpack_require__(204);
+		var unhandledRejection = __webpack_require__(205);
+		var TimeoutError = __webpack_require__(195);
 	
 		var Promise = [array, flow, fold, generate, progress,
 			inspect, withThis, timed, unhandledRejection]
 			.reduce(function(Promise, feature) {
 				return feature(Promise);
-			}, __webpack_require__(206));
+			}, __webpack_require__(207));
 	
-		var apply = __webpack_require__(197)(Promise);
+		var apply = __webpack_require__(198)(Promise);
 	
 		// Public API
 	
@@ -22990,11 +22992,11 @@
 	
 		return when;
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	})(__webpack_require__(188));
+	})(__webpack_require__(189));
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23004,8 +23006,8 @@
 	(function(define) { 'use strict';
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require) {
 	
-		var env = __webpack_require__(192);
-		var TimeoutError = __webpack_require__(194);
+		var env = __webpack_require__(193);
+		var TimeoutError = __webpack_require__(195);
 	
 		function setTimeout(f, ms, x, y) {
 			return env.setTimer(function() {
@@ -23074,11 +23076,11 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process) {/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23112,7 +23114,7 @@
 	
 		} else if (!capturedSetTimeout) { // vert.x
 			var vertxRequire = require;
-			var vertx = __webpack_require__(193);
+			var vertx = __webpack_require__(194);
 			setTimer = function (f, ms) { return vertx.setTimer(ms, f); };
 			clearTimer = vertx.cancelTimer;
 			asap = vertx.runOnLoop || vertx.runOnContext;
@@ -23153,18 +23155,18 @@
 			};
 		}
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports) {
 
 	/* (ignored) */
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23193,10 +23195,10 @@
 	
 		return TimeoutError;
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23206,8 +23208,8 @@
 	(function(define) { 'use strict';
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require) {
 	
-		var state = __webpack_require__(196);
-		var applier = __webpack_require__(197);
+		var state = __webpack_require__(197);
+		var applier = __webpack_require__(198);
 	
 		return function array(Promise) {
 	
@@ -23497,11 +23499,11 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23538,11 +23540,11 @@
 		}
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23597,13 +23599,13 @@
 		}
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 	
 	
 
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23765,11 +23767,11 @@
 		}
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23798,11 +23800,11 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23812,7 +23814,7 @@
 	(function(define) { 'use strict';
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require) {
 	
-		var inspect = __webpack_require__(196).inspect;
+		var inspect = __webpack_require__(197).inspect;
 	
 		return function inspection(Promise) {
 	
@@ -23824,11 +23826,11 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23895,11 +23897,11 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23925,11 +23927,11 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23968,12 +23970,12 @@
 		};
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 	
 
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -23983,8 +23985,8 @@
 	(function(define) { 'use strict';
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require) {
 	
-		var setTimer = __webpack_require__(192).setTimer;
-		var format = __webpack_require__(205);
+		var setTimer = __webpack_require__(193).setTimer;
+		var format = __webpack_require__(206);
 	
 		return function unhandledRejection(Promise) {
 	
@@ -24061,11 +24063,11 @@
 		function noop() {}
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -24123,11 +24125,11 @@
 		}
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -24137,20 +24139,20 @@
 	(function(define) { 'use strict';
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
 	
-		var makePromise = __webpack_require__(207);
-		var Scheduler = __webpack_require__(208);
-		var async = __webpack_require__(192).asap;
+		var makePromise = __webpack_require__(208);
+		var Scheduler = __webpack_require__(209);
+		var async = __webpack_require__(193).asap;
 	
 		return makePromise({
 			scheduler: new Scheduler(async)
 		});
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	})(__webpack_require__(188));
+	})(__webpack_require__(189));
 
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process) {/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -25107,12 +25109,12 @@
 			return Promise;
 		};
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** @license MIT License (c) copyright 2010-2014 original author or authors */
@@ -25194,11 +25196,11 @@
 		return Scheduler;
 	
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}(__webpack_require__(188)));
+	}(__webpack_require__(189)));
 
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25217,7 +25219,7 @@
 	
 			var mixin, origin, urlRE, absoluteUrlRE, fullyQualifiedUrlRE;
 	
-			mixin = __webpack_require__(210);
+			mixin = __webpack_require__(211);
 	
 			urlRE = /([a-z][a-z0-9\+\-\.]*:)\/\/([^@]+@)?(([^:\/]+)(:([0-9]+))?)?(\/[^?#]*)?(\?[^#]*)?(#\S*)?/i;
 			absoluteUrlRE = /^([a-z][a-z0-9\-\+\.]*:\/\/|\/)/i;
@@ -25426,14 +25428,14 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188),
+		__webpack_require__(189),
 		typeof window !== 'undefined' ? window.location : void 0
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25481,13 +25483,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25525,13 +25527,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25546,8 +25548,8 @@
 	
 		!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
 	
-			var when = __webpack_require__(190),
-				normalizeHeaderName = __webpack_require__(211);
+			var when = __webpack_require__(191),
+				normalizeHeaderName = __webpack_require__(212);
 	
 			function property(promise, name) {
 				return promise.then(
@@ -25671,13 +25673,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25694,8 +25696,8 @@
 	
 			var interceptor, mixinUtil, defaulter;
 	
-			interceptor = __webpack_require__(214);
-			mixinUtil = __webpack_require__(210);
+			interceptor = __webpack_require__(215);
+			mixinUtil = __webpack_require__(211);
 	
 			defaulter = (function () {
 	
@@ -25756,13 +25758,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25779,11 +25781,11 @@
 	
 			var defaultClient, mixin, responsePromise, client, when;
 	
-			defaultClient = __webpack_require__(186);
-			mixin = __webpack_require__(210);
-			responsePromise = __webpack_require__(212);
-			client = __webpack_require__(187);
-			when = __webpack_require__(190);
+			defaultClient = __webpack_require__(187);
+			mixin = __webpack_require__(211);
+			responsePromise = __webpack_require__(213);
+			client = __webpack_require__(188);
+			when = __webpack_require__(191);
 	
 			/**
 			 * Interceptors have the ability to intercept the request and/org response
@@ -25927,13 +25929,66 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 215 */
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*
+	 * Copyright 2012-2013 the original author or authors
+	 * @license MIT, see LICENSE.txt for details
+	 *
+	 * @author Scott Andrews
+	 */
+	
+	(function (define) {
+		'use strict';
+	
+		!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
+	
+			var interceptor, when;
+	
+			interceptor = __webpack_require__(215);
+			when = __webpack_require__(191);
+	
+			/**
+			 * Rejects the response promise based on the status code.
+			 *
+			 * Codes greater than or equal to the provided value are rejected.  Default
+			 * value 400.
+			 *
+			 * @param {Client} [client] client to wrap
+			 * @param {number} [config.code=400] code to indicate a rejection
+			 *
+			 * @returns {Client}
+			 */
+			return interceptor({
+				init: function (config) {
+					config.code = config.code || 400;
+					return config;
+				},
+				response: function (response, config) {
+					if (response.status && response.status.code >= config.code) {
+						return when.reject(response);
+					}
+					return response;
+				}
+			});
+	
+		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	
+	}(
+		__webpack_require__(189)
+		// Boilerplate for AMD and Node
+	));
+
+
+/***/ }),
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -25950,10 +26005,10 @@
 	
 			var interceptor, mime, registry, noopConverter, when;
 	
-			interceptor = __webpack_require__(214);
-			mime = __webpack_require__(216);
-			registry = __webpack_require__(217);
-			when = __webpack_require__(190);
+			interceptor = __webpack_require__(215);
+			mime = __webpack_require__(218);
+			registry = __webpack_require__(219);
+			when = __webpack_require__(191);
 	
 			noopConverter = {
 				read: function (obj) { return obj; },
@@ -26043,13 +26098,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 216 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26102,13 +26157,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 217 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26125,8 +26180,8 @@
 	
 			var mime, when, registry;
 	
-			mime = __webpack_require__(216);
-			when = __webpack_require__(190);
+			mime = __webpack_require__(218);
+			when = __webpack_require__(191);
 	
 			function Registry(mimes) {
 	
@@ -26210,11 +26265,11 @@
 			registry = new Registry({});
 	
 			// include provided serializers
-			registry.register('application/hal', __webpack_require__(218));
-			registry.register('application/json', __webpack_require__(225));
-			registry.register('application/x-www-form-urlencoded', __webpack_require__(226));
-			registry.register('multipart/form-data', __webpack_require__(227));
-			registry.register('text/plain', __webpack_require__(228));
+			registry.register('application/hal', __webpack_require__(220));
+			registry.register('application/json', __webpack_require__(227));
+			registry.register('application/x-www-form-urlencoded', __webpack_require__(228));
+			registry.register('multipart/form-data', __webpack_require__(229));
+			registry.register('text/plain', __webpack_require__(230));
 	
 			registry.register('+json', registry.delegate('application/json'));
 	
@@ -26223,13 +26278,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 218 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26246,12 +26301,12 @@
 	
 			var pathPrefix, template, find, lazyPromise, responsePromise, when;
 	
-			pathPrefix = __webpack_require__(219);
-			template = __webpack_require__(220);
-			find = __webpack_require__(223);
-			lazyPromise = __webpack_require__(224);
-			responsePromise = __webpack_require__(212);
-			when = __webpack_require__(190);
+			pathPrefix = __webpack_require__(221);
+			template = __webpack_require__(222);
+			find = __webpack_require__(225);
+			lazyPromise = __webpack_require__(226);
+			responsePromise = __webpack_require__(213);
+			when = __webpack_require__(191);
 	
 			function defineProperty(obj, name, value) {
 				Object.defineProperty(obj, name, {
@@ -26368,13 +26423,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 219 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26391,8 +26446,8 @@
 	
 			var interceptor, UrlBuilder;
 	
-			interceptor = __webpack_require__(214);
-			UrlBuilder = __webpack_require__(209);
+			interceptor = __webpack_require__(215);
+			UrlBuilder = __webpack_require__(210);
 	
 			function startsWith(str, prefix) {
 				return str.indexOf(prefix) === 0;
@@ -26433,13 +26488,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 220 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26456,9 +26511,9 @@
 	
 			var interceptor, uriTemplate, mixin;
 	
-			interceptor = __webpack_require__(214);
-			uriTemplate = __webpack_require__(221);
-			mixin = __webpack_require__(210);
+			interceptor = __webpack_require__(215);
+			uriTemplate = __webpack_require__(223);
+			mixin = __webpack_require__(211);
 	
 			/**
 			 * Applies request params to the path as a URI Template
@@ -26495,13 +26550,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 221 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26520,7 +26575,7 @@
 	
 			var uriEncoder, operations, prefixRE;
 	
-			uriEncoder = __webpack_require__(222);
+			uriEncoder = __webpack_require__(224);
 	
 			prefixRE = /^([^:]*):([0-9]+)$/;
 			operations = {
@@ -26673,13 +26728,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 222 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26859,13 +26914,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 223 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26906,13 +26961,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 224 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -26929,7 +26984,7 @@
 	
 			var when;
 	
-			when = __webpack_require__(190);
+			when = __webpack_require__(191);
 	
 			/**
 			 * Create a promise whose work is started only when a handler is registered.
@@ -26967,13 +27022,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 225 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -27020,13 +27075,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 226 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -27116,13 +27171,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 227 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -27195,13 +27250,13 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
-/* 228 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -27230,101 +27285,25 @@
 		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	
 	}(
-		__webpack_require__(188)
-		// Boilerplate for AMD and Node
-	));
-
-
-/***/ }),
-/* 229 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
-	
-	/**
-	 * Created by eric on 6/30/17.
-	 */
-	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
-	    'use strict';
-	
-	    var interceptor = __webpack_require__(214);
-	
-	    return interceptor({
-	        request: function request(_request /*, config, meta */) {
-	            /* If the URI is a URI Template per RFC 6570 (http://tools.ietf.org/html/rfc6570), trim out the template part */
-	            if (_request.path.indexOf('{') === -1) {
-	                return _request;
-	            } else {
-	                _request.path = _request.path.split('{')[0];
-	                return _request;
-	            }
-	        }
-	    });
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-/***/ }),
-/* 230 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*
-	 * Copyright 2012-2013 the original author or authors
-	 * @license MIT, see LICENSE.txt for details
-	 *
-	 * @author Scott Andrews
-	 */
-	
-	(function (define) {
-		'use strict';
-	
-		!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
-	
-			var interceptor, when;
-	
-			interceptor = __webpack_require__(214);
-			when = __webpack_require__(190);
-	
-			/**
-			 * Rejects the response promise based on the status code.
-			 *
-			 * Codes greater than or equal to the provided value are rejected.  Default
-			 * value 400.
-			 *
-			 * @param {Client} [client] client to wrap
-			 * @param {number} [config.code=400] code to indicate a rejection
-			 *
-			 * @returns {Client}
-			 */
-			return interceptor({
-				init: function (config) {
-					config.code = config.code || 400;
-					return config;
-				},
-				response: function (response, config) {
-					if (response.status && response.status.code >= config.code) {
-						return when.reject(response);
-					}
-					return response;
-				}
-			});
-	
-		}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	
-	}(
-		__webpack_require__(188)
+		__webpack_require__(189)
 		// Boilerplate for AMD and Node
 	));
 
 
 /***/ }),
 /* 231 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	
 	/**
 	 * Created by eric on 6/30/17.
 	 */
-	!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	exports.default = function () {
 	    'use strict';
 	
 	    /* Convert a single or array of resources into "URI1\nURI2\nURI3..." */
@@ -27345,7 +27324,231 @@
 	            }
 	        }
 	    };
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	};
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _interceptor = __webpack_require__(215);
+	
+	var _interceptor2 = _interopRequireDefault(_interceptor);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = (0, _interceptor2.default)({
+	    request: function request(_request /*, config, meta */) {
+	        /* If the URI is a URI Template per RFC 6570 (http://tools.ietf.org/html/rfc6570), trim out the template part */
+	        if (_request.path.indexOf('{') === -1) {
+	            return _request;
+	        } else {
+	            _request.path = _request.path.split('{')[0];
+	            return _request;
+	        }
+	    }
+	}); /**
+	     * Created by eric on 6/30/17.
+	     */
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	/**
+	 * Created by eric on 6/30/17.
+	 */
+	
+	exports.default = function (api, rootPath, relArray) {
+	    var root = api({
+	        method: 'GET',
+	        path: rootPath
+	    });
+	
+	    return relArray.reduce(function (root, arrayItem) {
+	        var rel = typeof arrayItem === 'string' ? arrayItem : arrayItem.rel;
+	        return traverseNext(root, rel, arrayItem);
+	    }, root);
+	
+	    function traverseNext(root, rel, arrayItem) {
+	        return root.then(function (res) {
+	            if (hasEmbeddedRel(res.entity, rel)) return res.entity._embedded[rel];
+	            if (!res.entity._links) return [];
+	
+	            if (typeof arrayItem === 'string') {
+	                return api({
+	                    method: 'GET',
+	                    path: response.entity._links[rel].href
+	                });
+	            } else {
+	                return api({
+	                    method: 'GET',
+	                    path: res.entity._links[rel].href,
+	                    params: arrayItem.params
+	                });
+	            }
+	        });
+	    }
+	
+	    function hasEmbeddedRel(entity, rel) {
+	        return entity._embedded && entity._embedded.hasOwnProperty(rel);
+	    }
+	};
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Employee = __webpack_require__(235);
+	
+	var _Employee2 = _interopRequireDefault(_Employee);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EmployeeList = function (_React$Component) {
+	    _inherits(EmployeeList, _React$Component);
+	
+	    function EmployeeList() {
+	        _classCallCheck(this, EmployeeList);
+	
+	        return _possibleConstructorReturn(this, (EmployeeList.__proto__ || Object.getPrototypeOf(EmployeeList)).apply(this, arguments));
+	    }
+	
+	    _createClass(EmployeeList, [{
+	        key: 'render',
+	        value: function render() {
+	            var employees = this.props.employees.map(function (employee) {
+	                return _react2.default.createElement(_Employee2.default, { key: employee._links.self.href, employee: employee });
+	            });
+	            return _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'First Name'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Last Name'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Description'
+	                        )
+	                    ),
+	                    employees
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return EmployeeList;
+	}(_react2.default.Component);
+	
+	exports.default = EmployeeList;
+	;
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Employee = function (_React$Component) {
+	    _inherits(Employee, _React$Component);
+	
+	    function Employee() {
+	        _classCallCheck(this, Employee);
+	
+	        return _possibleConstructorReturn(this, (Employee.__proto__ || Object.getPrototypeOf(Employee)).apply(this, arguments));
+	    }
+	
+	    _createClass(Employee, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.employee.firstName
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.employee.lastName
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.employee.description
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Employee;
+	}(_react2.default.Component);
+	
+	exports.default = Employee;
+	;
 
 /***/ })
 /******/ ]);

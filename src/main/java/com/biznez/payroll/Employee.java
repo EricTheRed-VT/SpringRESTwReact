@@ -19,7 +19,7 @@ public class Employee {
     private String description;
 
     private Employee() {
-        
+
     }
     public Employee(String first, String last, String descrip) {
         firstName = first;
