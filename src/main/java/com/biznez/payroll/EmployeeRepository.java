@@ -1,8 +1,9 @@
 package com.biznez.payroll;
 
-import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * Created by eric on 6/30/17.
  */
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {}
+public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {}

@@ -1,7 +1,7 @@
 /**
  * Created by eric on 6/30/17.
  */
-define(function() {
+export default () => {
     'use strict';
 
     /* Convert a single or array of resources into "URI1\nURI2\nURI3..." */
@@ -21,4 +21,4 @@ define(function() {
         }
     };
 
-});
+};
