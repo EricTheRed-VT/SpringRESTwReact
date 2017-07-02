@@ -21,7 +21,7 @@ export default (api, rootPath, relArray) => {
             if (typeof  arrayItem === 'string') {
                 return api({
                     method: 'GET',
-                    path: response.entity._links[rel].href
+                    path: res.entity._links[rel].href
                 });
             } else {
                 return api({

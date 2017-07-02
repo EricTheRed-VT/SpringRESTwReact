@@ -4,6 +4,15 @@ import Employee from './Employee';
 
 export default class EmployeeList extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.handleInput = this.handleInput.bind(this);
+        this.handleNavFirst = this.handleNavFirst.bind(this);
+        this.handleNavPrev = this.handleNavPrev.bind(this);
+        this.handleNavNext = this.handleNavNext.bind(this);
+        this.handleNavLast = this.handleNavLast.bind(this);
+    }
+
     handleInput(e) {
         e.preventDefault();
         let pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
@@ -41,18 +50,18 @@ export default class EmployeeList extends React.Component {
         );
 
         const navLinks = [];
-        if ("first" in this.props.links) {
+        if (this.props.links.first) {
             navLinks.push(<button key="first" onClick={this.handleNavFirst}>&lt;&lt;</button>);
-        }
-        if ("prev" in this.props.links) {
-            navLinks.push(<button key="prev" onClick={this.handleNavPrev()}>&lt;</button>);
-        }
-        if ("next" in this.props.links) {
+        };
+        if (this.props.links.prev) {
+            navLinks.push(<button key="prev" onClick={this.handleNavPrev}>&lt;</button>);
+        };
+        if (this.props.links.next) {
             navLinks.push(<button key="next" onClick={this.handleNavNext}>&gt;</button>);
-        }
-        if ("last" in this.props.links) {
+        };
+        if (this.props.links.last) {
             navLinks.push(<button key="last" onClick={this.handleNavLast}>&gt;&gt;</button>);
-        }
+        };
 
         return (
             <div>

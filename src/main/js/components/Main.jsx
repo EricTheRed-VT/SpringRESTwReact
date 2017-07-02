@@ -2,13 +2,23 @@ import React from 'react';
 import client from '../client';
 import follow from '../follow';
 import EmployeeList from './EmployeeList';
+import CreateDialog from './CreateDialog';
 
 const root = '/api';
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { employees: [] };
+        this.state = {
+            employees: [],
+            attributes: [],
+            pageSize: 2,
+            links: {}
+        };
+        this.onNavigate = this.onNavigate.bind(this);
+        this.onCreate = this.onCreate.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+        this.updatePageSize = this.updatePageSize.bind(this);
     }
 
     loadFromServer(pageSize) {
@@ -18,15 +28,16 @@ export default class Main extends React.Component {
                 method: 'GET',
                 path: employeeCollection.entity._links.profile.href,
                 headers: {'Accept': 'application/schema+json'}
-            }).then(schema=> {
+            }).then(schema => {
                 this.schema = schema.entity;
                 return employeeCollection;
             });
         }).done(employeeCollection => {
+            console.log("CCCCCCCCCC", employeeCollection);
             this.setState({
                 employees: employeeCollection.entity._embedded.employees,
                 attributes: Object.keys(this.schema.properties),
-                pageSize,
+                pageSize: pageSize,
                 links: employeeCollection.entity._links
             });
         });
@@ -58,11 +69,13 @@ export default class Main extends React.Component {
                     params: {'size': this.state.pageSize}
                 }])
             ).done(
-                res => this.onNavigate(
-                    (typeof res.entity._links.last != "undefined") ?
-                        res.entity._links.last.href :
-                        res.entity._links.self.href
-                )
+                res => {
+                    if (typeof res.entity._links.last != "undefined") {
+                        this.onNavigate(res.entity._links.last.href);
+                    } else {
+                        this.onNavigate(res.entity._links.self.href);
+                    }
+                }
             );
     }
 
@@ -85,12 +98,17 @@ export default class Main extends React.Component {
 
     render() {
         return (
-            <EmployeeList employees={this.state.employees}
-                          onCreate={this.onCreate}
-                          onNavigate = {this.onNavigate}
-                          onDelete = {this.onDelete}
-                          updatePageSize = {this.updatePageSize}
-            />
+            <div>
+                <CreateDialog attributes={this.state.attributes}
+                              onCreate={this.onCreate}              />
+                <EmployeeList employees={this.state.employees}
+                              onCreate={this.onCreate}
+                              onNavigate = {this.onNavigate}
+                              onDelete = {this.onDelete}
+                              updatePageSize = {this.updatePageSize}
+                              links={this.state.links}
+                              pageSize={this.state.pageSize}        />
+            </div>
         )
     }
 }

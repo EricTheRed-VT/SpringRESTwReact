@@ -35,7 +35,7 @@ export default class CreateDialog extends React.Component {
         return (
             <div>
                 <a href="#createEmployee">Create</a>
-                <div id="createEmployee" classname="modalDialog">
+                <div id="createEmployee" className="modalDialog">
                     <div>
                         <a href="#" title="Close" className="close">X</a>
                         <h2>Create new employee</h2>
