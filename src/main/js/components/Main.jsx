@@ -33,7 +33,6 @@ export default class Main extends React.Component {
                 return employeeCollection;
             });
         }).done(employeeCollection => {
-            console.log("CCCCCCCCCC", employeeCollection);
             this.setState({
                 employees: employeeCollection.entity._embedded.employees,
                 attributes: Object.keys(this.schema.properties),
