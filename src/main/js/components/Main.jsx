@@ -23,23 +23,35 @@ export default class Main extends React.Component {
 
     loadFromServer(pageSize) {
         follow(client, root, [{rel: 'employees', params: {size: pageSize}}]
-        ).then(employeeCollection => {
-            return client({
+        ).then(
+            employeeCollection => client({
                 method: 'GET',
                 path: employeeCollection.entity._links.profile.href,
                 headers: {'Accept': 'application/schema+json'}
-            }).then(schema => {
+            }).then(
+                schema => {
                 this.schema = schema.entity;
+                this.links = employeeCollection.entity._links;
                 return employeeCollection;
-            });
-        }).done(employeeCollection => {
-            this.setState({
+                }
+            )
+        ).then(
+            employeeCollection =>
+                employeeCollection.entity._embedded.employees
+                    .map(employee => client({
+                        method: 'GET',
+                        path: employee._links.self.href
+                    }))
+        ).then(
+            employeePromises => when.all(employeePromises)
+        ).done(
+            employeeCollection => this.setState({
                 employees: employeeCollection.entity._embedded.employees,
                 attributes: Object.keys(this.schema.properties),
                 pageSize: pageSize,
                 links: employeeCollection.entity._links
-            });
-        });
+            })
+        );
     }
 
     onNavigate(navUri) {

@@ -1,10 +1,12 @@
 package com.biznez.payroll;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 /**
  * Created by eric on 6/30/17.
@@ -17,10 +19,9 @@ public class Employee {
     private String firstName;
     private  String lastName;
     private String description;
+    @Version @JsonIgnore Long version;
 
-    private Employee() {
-
-    }
+    private Employee() {}
     public Employee(String first, String last, String descrip) {
         firstName = first;
         lastName = last;
