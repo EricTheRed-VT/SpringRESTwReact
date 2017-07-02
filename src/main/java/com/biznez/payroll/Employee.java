@@ -19,7 +19,7 @@ public class Employee {
     private String firstName;
     private  String lastName;
     private String description;
-    @Version @JsonIgnore Long version;
+    @Version @JsonIgnore private Long version;
 
     private Employee() {}
     public Employee(String first, String last, String descrip) {
